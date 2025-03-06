@@ -1,0 +1,38 @@
+# .NET Core ve Visual Studio için .gitignore dosyası
+
+## Genel .NET dosyaları
+*.user
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.ide
+*.sw?
+
+## Build klasörleri
+bin/
+obj/
+
+## .vs klasörünü hariç tut
+.vs/
+
+## MacOS ve Linux için sistem dosyaları
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+*.Spotlight-V100*
+*.Trashes
+
+## Rider ve JetBrains için
+.idea/
+*.iml
+
+## log ve geçici dosyalar
+*.log
+*.bak
+*.tmp
+*.cache
+
+## Paket yönetimi
+node_modules/
+packages/
