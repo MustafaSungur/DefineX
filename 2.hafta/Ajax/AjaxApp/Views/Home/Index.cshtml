@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Ürün Arama";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Arama</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            gap: 10rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div >
+            <h2>Ürün Arama</h2>
+
+            <input type="text" id="txtUrunAd" placeholder="Ürün Adı arama..." />
+            <button onclick="EkranTemizle()">Temizle</button>
+            <div id="sonuc"></div>
+        </div>
+
+        <div>
+            <h3>Yeni Ürün Ekle</h3>
+            <input type="text" id="txtYeniUrun" placeholder="Yeni Ürün Adı" />
+            <button onclick="UrunEkle()">Ürün Ekle</button>
+            <p id="eklemeSonuc"></p>
+        </div>
+   </div>
+    <script>
+        function EkranTemizle() {
+            $('#txtUrunAd').val('');
+            $('#sonuc').html('');
+        }
+
+        $('#txtUrunAd').on('input', function () {
+            UrunBilgiGetir();
+        });
+
+        function UrunBilgiGetir() {
+            var urunAdi = $('#txtUrunAd').val();
+            if (urunAdi !== '') {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/ProductApi/GetProducts?qUrunAdi=" + encodeURIComponent(urunAdi),
+                    contentType: 'application/json',
+                    dataType: "json",
+                    success: function (data) {
+                        $('#sonuc').html('');
+                        if (data.length === 0) {
+                            $('#sonuc').html('Kayıt bulunamadı.');
+                        } else {
+                            data.forEach(function (item) {
+                                $('#sonuc').append('<div>' + item + '</div>');
+                            });
+                        }
+                    },
+                    error: function (xhr) {
+                        console.log(xhr)
+                        $('#sonuc').html('Hata: ' + xhr.responseText);
+                    }
+                });
+            }
+        }
+
+        function UrunEkle() {
+            var urunAdi = $('#txtYeniUrun').val();
+            if (urunAdi === '') {
+                $('#eklemeSonuc').text("Ürün adı boş olamaz!");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/api/ProductApi/AddProduct",
+                contentType: "application/json",
+                data: JSON.stringify(urunAdi),
+                success: function (response) {
+                    $('#eklemeSonuc').text(response);
+                    $('#txtYeniUrun').val('');
+                    UrunBilgiGetir(); // Ürün listesini günceller
+                },
+                error: function (xhr) {
+                    $('#eklemeSonuc').text("Hata: " + xhr.responseText);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
