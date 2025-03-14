@@ -7,7 +7,7 @@
 
 ![image](https://github.com/user-attachments/assets/01b93053-a309-4644-9ee8-00085ee46ea1)
 
-* ### Nginx Logları:
+* ### Nginx Logları: Bazı istekleri ApiGatewayBlue'ya bazı istekleri ApiGatewayRed'e iletildi
 
 ![Screenshot_5](https://github.com/user-attachments/assets/9c23f2d6-0cde-4bfa-920c-8c34c3160c32)
 
