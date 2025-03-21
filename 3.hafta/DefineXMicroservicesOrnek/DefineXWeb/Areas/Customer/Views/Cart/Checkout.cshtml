@@ -85,15 +85,10 @@
 
                             <hr />
 
-                            @{
-                                int i = 0;
-                            }
+                         
                             @foreach (var cartObj in Model.CartDetails)
                             {
-                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).CartDetailsId" />
-                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).ProductId" />
-                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).Count" />
-                                @* Diğer detayları gerekirse ekleyebilirsin *@
+                              
 
                                 <div class="row h-100">
                                     <div class="col-6">
@@ -108,7 +103,7 @@
                                     </div>
                                 </div>
                                 <hr />
-                                i++;
+                                
                             }
 
                             <div class="row">

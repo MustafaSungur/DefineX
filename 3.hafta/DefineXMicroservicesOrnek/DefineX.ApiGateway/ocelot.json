@@ -28,7 +28,7 @@
     {
       "UpstreamPathTemplate": "/gateway/cartc",
       "UpstreamHttpMethod": [ "POST" ],
-      "DownstreamPathTemplate": "/api/cart",
+      "DownstreamPathTemplate": "/api/cartc",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
