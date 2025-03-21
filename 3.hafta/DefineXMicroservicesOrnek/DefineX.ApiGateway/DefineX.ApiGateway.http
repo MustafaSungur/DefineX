@@ -1,0 +1,6 @@
+@DefineX.ApiGateway_HostAddress = http://localhost:5291
+
+GET {{DefineX.ApiGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
