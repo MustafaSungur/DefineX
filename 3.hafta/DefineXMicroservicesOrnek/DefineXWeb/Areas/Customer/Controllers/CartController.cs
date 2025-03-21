@@ -81,7 +81,7 @@ namespace DefineXWeb.Areas.Customer.Controllers
             try
             {
                 var accessToken = await HttpContext.GetTokenAsync("access_token");
-                var response = await _cartService.Checkout<ResponseDto>(cartDto.CartHeader, accessToken);
+                var response = await _cartService.Checkout<ResponseDto>(cartDto, accessToken);
                 // var response = await _cartService.Checkout2<ResponseDto>(cartDto, accessToken);
                 if (!response.IsSuccess)
                 {

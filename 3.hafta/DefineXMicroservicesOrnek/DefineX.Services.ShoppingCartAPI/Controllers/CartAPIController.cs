@@ -50,7 +50,7 @@ namespace DefineX.Services.ShoppingCartAPI.Controllers
         {
             try
             {
-                if (cartDto.CartHeader.CouponCode == null)
+                if (cartDto.CartHeader.CouponCode == null )
                 {
                     cartDto.CartHeader.CouponCode = ""; //
                 }

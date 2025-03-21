@@ -84,9 +84,16 @@
                             </div>
 
                             <hr />
-                           
+
+                            @{
+                                int i = 0;
+                            }
                             @foreach (var cartObj in Model.CartDetails)
                             {
+                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).CartDetailsId" />
+                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).ProductId" />
+                                <input type="hidden" asp-for="@Model.CartDetails.ElementAt(i).Count" />
+                                @* Diğer detayları gerekirse ekleyebilirsin *@
 
                                 <div class="row h-100">
                                     <div class="col-6">
@@ -95,14 +102,15 @@
 
                                     <div class="col-3" style="font-size:11px;">
                                         <span style="font-size:17px;">@cartObj.Product.Price TL</span>
-
                                     </div>
                                     <div class="col-3" style="font-size:11px;">
                                         <span style="font-size:17px;"> @cartObj.Count</span>
                                     </div>
                                 </div>
                                 <hr />
+                                i++;
                             }
+
                             <div class="row">
                                 <div class="col-12 text-right pr-4 text-danger">
                                     Order Total :  @string.Format("{0:c}", Model.CartHeader.OrderTotal) <br />
@@ -134,7 +142,7 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".form_datetime").datetimepicker({ format: 'yyyy-mm-dd hh:ii' });
+            $(".form_datetime").datetimepicker({ format: 'dd-MM-yyyy' });
             $('.form_datetime').datetimepicker('setStartDate', new Date());
         });
     </script>

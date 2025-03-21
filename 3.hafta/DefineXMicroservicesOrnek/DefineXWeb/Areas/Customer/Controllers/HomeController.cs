@@ -43,7 +43,8 @@ namespace DefineXWeb.Areas.Customer.Controllers
             var response = await _productService.GetProductByIdAsync<ResponseDto>(productId, "");
             if (response != null && response.IsSuccess)
             {
-                model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
+                model = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+
             }
             return View(model);
         }

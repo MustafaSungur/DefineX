@@ -31,7 +31,7 @@ builder.Services.AddAuthentication("Bearer")
 
 
 
-        options.Authority = "https://localhost:44365/";
+        options.Authority = builder.Configuration["IdentityServer:Authority"];
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false

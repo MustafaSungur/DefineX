@@ -37,12 +37,12 @@ namespace DefineXWeb.Services
             });
         }
 
-        public async Task<T> Checkout<T>(CartHeaderDto cartHeader, string token)
+        public async Task<T> Checkout<T>(CartDto cartDto, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.POST,
-                Data = cartHeader,
+                Data = cartDto,
                 Url = SD.ShoppingCartAPIBase + "/cartc",
                 AccessToken = token
             });

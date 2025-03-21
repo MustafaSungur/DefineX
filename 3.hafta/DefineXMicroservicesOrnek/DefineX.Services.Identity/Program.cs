@@ -23,10 +23,16 @@ var builderProvider = builder.Services.AddIdentityServer(options =>
     options.Events.RaiseFailureEvents = true;
     options.Events.RaiseSuccessEvents = true;
     options.EmitStaticAudienceClaim = true;
-}).AddInMemoryIdentityResources(SD.IdentityResources)
+
+    //// IssuerUri ayarý
+    //options.IssuerUri = builder.Configuration["IdentityServer:IssuerUri"];
+})
+.AddInMemoryIdentityResources(SD.IdentityResources)
 .AddInMemoryApiScopes(SD.ApiScopes)
 .AddInMemoryClients(SD.Clients)
 .AddAspNetIdentity<ApplicationUser>();
+
+
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builderProvider.AddDeveloperSigningCredential();
