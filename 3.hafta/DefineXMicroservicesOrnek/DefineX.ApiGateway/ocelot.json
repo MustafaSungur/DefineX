@@ -140,13 +140,13 @@
     // COUPON SERVICE
     {
       "UpstreamPathTemplate": "/gateway/coupon/{couponCode}",
-      "UpstreamHttpMethod": [ "PUT" ],
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/api/coupon/{couponCode}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5005
+          "Port": 5002
         }
       ],
       "RateLimitOptions": {
